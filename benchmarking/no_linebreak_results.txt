@@ -1,0 +1,35 @@
+Timer unit: 1e-06 s
+
+Total time: 36.7211 s
+File: <ipython-input-501-b390be0b494f>
+Function: find_time_average_high at line 1
+
+Line #      Hits         Time  Per Hit   % Time  Line Contents
+==============================================================
+     1                                           def find_time_average_high():
+     2         1            7      7.0      0.0      orderbook = OrderBook()
+     3         1            1      1.0      0.0      file_path = '/Users/camcairns/Dropbox/py_modules/data_science_projects/OxAM/generated_data_1million_orders.txt'
+     4         1          160    160.0      0.0      if is_non_zero_file(file_path):
+     5         1           96     96.0      0.0          with open(file_path) as f:
+     6   2000001      2001940      1.0      5.5              for line in f:
+     7   2000000      3068667      1.5      8.4                  new_line = line.split()
+     8   2000000      2949721      1.5      8.0                  orderbook.delta_t = float(new_line[0]) - orderbook.latest_time
+     9   2000000      2453773      1.2      6.7                  orderbook.latest_time = float(new_line[0])
+    10   2000000      3751429      1.9     10.2                  orderbook.get_high_price()
+    11                                           #                 print orderbook.high_price
+    12   2000000      4712892      2.4     12.8                  if np.isnan(orderbook.high_price):
+    13         1            1      1.0      0.0                     pass
+    14                                                           else:
+    15   1999999      3322323      1.7      9.0                      orderbook.update_elapsed_time()
+    16   1999999      3373649      1.7      9.2                      orderbook.update_time_scaled_high_price()
+    17   2000000      1846403      0.9      5.0                  if new_line[1] == 'I':
+    18   1000000      5766125      5.8     15.7                      ˛cs.LJ	WEIO2191]\1\
+Q9UJJA;	“
+‘lkkaHSDFDMDKLKAKDN
+    19                                                           else:
+    20   1000000      3465769      3.5      9.4                      orderbook.erase(int(new_line[2]))
+    21         1           75     75.0      0.0              print 'The time-weighted high price is', orderbook.time_scaled_high_price/orderbook.elapsed_time
+    22         1           22     22.0      0.0              print orderbook.time_scaled_high_price
+    23         1         8086   8086.0      0.0              print orderbook.elapsed_time
+    24                                               else:
+    25                                                   print 'ASCII text file is empty! No data to compute time weighted high price.'
